@@ -1,0 +1,29 @@
+.commentCont {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 2rem;
+}
+
+.commenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.commenter h4 {
+  margin: 0;
+  font-family: "Roboto";
+  font-weight: 700;
+  font-size: 0.8125rem;
+  line-height: 0.9375rem;
+}
+
+.commenter p {
+  margin: 0;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 0.6875rem;
+  line-height: 13px;
+  color: rgba(0, 0, 0, 0.8);
+}
