@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./Headers.module.css";
 
-export default function Headers() {
+export default function Headers(props) {
   return (
     <div className={classes.headers}>
       <h1>Discover</h1>

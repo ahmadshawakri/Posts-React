@@ -1,16 +1,18 @@
 import React from "react";
 import classes from "./UserInfo.module.css";
 
-export default function UserInfo(props) {
+const UserInfo = (props) => {
   return (
-    <div>
+    <div className={classes.userCont}>
       <div>
         <img src="../../.././img/posts.png" />
       </div>
-      <div>
+      <div className={classes.userNames}>
         <h4>{props.name}</h4>
-        <h4>@{props.userName}</h4>
+        <h5>@{props.userName}</h5>
       </div>
     </div>
   );
-}
+};
+
+export default UserInfo;

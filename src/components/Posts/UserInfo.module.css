@@ -1,0 +1,30 @@
+.userCont {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 2rem;
+}
+
+.userNames {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.userNames h4 {
+  margin: 0;
+  font-family: "Roboto";
+  font-weight: 700;
+  font-size: 0.8125rem;
+  line-height: 0.9375rem;
+}
+
+.userNames h5 {
+  margin: 0;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 0.6875rem;
+  line-height: 0.8125rem;
+  color: rgba(0, 0, 0, 0.8);
+}
