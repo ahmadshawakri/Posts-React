@@ -5,7 +5,6 @@ import UserInfo from "./UserInfo";
 import PostContent from "./PostContent";
 import AddComment from "./AddComment";
 import AddPost from "./AddPost";
-import { UserContext } from "../../Contexts/UserContext";
 
 export default function Posts(props) {
   const [posts, setPosts] = useState([]);

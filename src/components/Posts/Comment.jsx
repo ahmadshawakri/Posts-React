@@ -8,7 +8,7 @@ const Comment = (props) => {
       {props.body.map((comment) => (
         <div key={comment} className={classes.commentCont}>
           <div>
-            <img src="../../.././img/comments.png" />
+            <img src="../img/comments.png" />
           </div>
           <div className={classes.commenter}>
             <h4>{user.name}</h4>
