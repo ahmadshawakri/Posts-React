@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import ModalContant from "./ModalContant";
+import ModalContant from "../UI/ModalContant";
 
 Modal.setAppElement("#root");
 const customStyles = {

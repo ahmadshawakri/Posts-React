@@ -1,11 +1,6 @@
-.postBody {
-  display: flex;
-  cursor: pointer;
-}
-
-.postBody p {
+.mainPost p {
   font-family: "Roboto";
-  font-weight: 400;
+  font-weight: 700;
   font-size: 0.9375rem;
   line-height: 1.125rem;
   letter-spacing: 0.0094rem;

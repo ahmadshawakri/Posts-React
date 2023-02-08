@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    cursor: text;
 }
 
 .addComment input{
@@ -12,6 +13,7 @@
     font-weight: 400;
     font-size: .6875rem;
     line-height: .8125rem;
+    cursor: text;
 }
 
 .addComment input:focus{

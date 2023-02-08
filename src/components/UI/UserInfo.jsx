@@ -5,7 +5,7 @@ const UserInfo = (props) => {
   return (
     <div className={classes.userCont}>
       <div>
-        <img src="../img/posts.png" />
+        <img src="../../../img/posts.png" />
       </div>
       <div className={classes.userNames}>
         <h4>{props.name}</h4>

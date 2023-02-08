@@ -1,0 +1,18 @@
+.userCont {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.userName h4 {
+  margin: 0;
+  font-family: "Roboto";
+  font-weight: 700;
+  font-size: 0.8125rem;
+  line-height: 0.9375rem;
+}
+
+.commentsBody p {
+  font-family: "Comfortoo";
+  font-weight: 500;
+}

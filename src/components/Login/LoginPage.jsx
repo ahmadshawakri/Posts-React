@@ -2,12 +2,10 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import classes from "./LoginPage.module.css";
 import Error from "../ErrorMsg/Error";
-import { UserContext } from "../../Contexts/UserContext";
 
 const Login = (props) => {
   const emailRef = useRef(null);
   const navigateTo = useNavigate();
-  const { setUserInfo } = useContext(UserContext);
 
   const [error, setError] = useState(null);
 
@@ -25,7 +23,6 @@ const Login = (props) => {
       } else {
         setError(null);
         localStorage.user = JSON.stringify(user[0]);
-        setUserInfo(JSON.parse(localStorage.user));
         navigateTo(`/posts/${user[0].id}`);
       }
     } catch (err) {
