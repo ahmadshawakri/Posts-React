@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Headers from "../UI/Headers";
 import UserInfo from "../UI/UserInfo";
 import Card from "../UI/Card";
@@ -8,11 +8,11 @@ import classes from "./Comments.module.css";
 import AddComment from "../Posts/AddComment";
 
 const Comments = (props) => {
-  const location = useLocation();
-  const clickedPost = location.state;
-  console.log(clickedPost.id);
+  const { id } = useParams();
+  // console.log(id);
 
   const [state, setState] = useState({
+    postBody: "",
     postComments: [],
     loggedUser: [],
     isLoaded: false,
@@ -21,12 +21,17 @@ const Comments = (props) => {
   useEffect(() => {
     const loadComments = async () => {
       const user = JSON.parse(localStorage.user);
-      const res = await fetch(
-        `https://jsonplaceholder.typicode.com/posts/${clickedPost.id}/comments`
+      const postRes = await fetch(
+        `https://jsonplaceholder.typicode.com/posts/${id}`
       );
-      const comments = await res.json();
+      const mainPost = await postRes.json();
+      const commentsRes = await fetch(
+        `https://jsonplaceholder.typicode.com/posts/${id}/comments`
+      );
+      const comments = await commentsRes.json();
       if (comments.length !== 0) {
         setState({
+          postBody: `${mainPost.body}`,
           postComments: comments,
           loggedUser: user,
           isLoaded: true,
@@ -48,7 +53,7 @@ const Comments = (props) => {
         />
       </div>
       <div className={classes.mainPost}>
-        <p>{clickedPost.body}</p>
+        <p>{state.postBody}</p>
       </div>
       <div>
         <AddComment />

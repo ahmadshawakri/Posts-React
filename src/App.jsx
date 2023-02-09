@@ -1,5 +1,4 @@
 import "./App.css";
-import { useState } from "react";
 import Login from "./components/Login/LoginPage";
 import Posts from "./components/Posts/Posts";
 import Comments from "./components/Comments/Comments";
@@ -12,7 +11,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Login />} />
           <Route path="/posts/:id" element={<Posts />} />
-          <Route path="/posts/:id/comments" element={<Comments />} />
+          <Route path="/comments/:id" element={<Comments />} />
         </Routes>
       </Router>
     </>

@@ -15,7 +15,7 @@ const customStyles = {
   },
 };
 
-const AddPost = () => {
+const AddPost = (props) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
@@ -36,7 +36,7 @@ const AddPost = () => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
       >
-        <ModalContant onCloseModal={closeModal} />
+        <ModalContant onCloseModal={closeModal} onAddPost={props.onAddPost} />
       </Modal>
     </>
   );

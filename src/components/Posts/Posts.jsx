@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./Posts.module.css";
 import Headers from "../UI/Headers";
 import UserInfo from "../UI/UserInfo";
@@ -30,6 +30,14 @@ export default function Posts(props) {
     loadPosts();
   }, []);
 
+  const addPostHandler = async (addedNewPost) => {
+    await setState((prevState) => ({
+      userPosts: [addedNewPost, ...prevState.userPosts],
+      userInfo: prevState.userInfo,
+      isLoaded: prevState.isLoaded,
+    }));
+  };
+
   return (
     <>
       <Card>
@@ -37,14 +45,17 @@ export default function Posts(props) {
         {state.isLoaded &&
           state.userPosts.map((post) => (
             <React.Fragment key={post.id}>
-              <UserInfo name={state.userInfo.name} userName={state.userInfo.username} />
+              <UserInfo
+                name={state.userInfo.name}
+                userName={state.userInfo.username}
+              />
               <PostContent content={post} />
               <AddComment />
             </React.Fragment>
           ))}
       </Card>
       <footer className={classes.footer}>
-        <AddPost />
+        <AddPost onAddPost={addPostHandler} />
       </footer>
     </>
   );

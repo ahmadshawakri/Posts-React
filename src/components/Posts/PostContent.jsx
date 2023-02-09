@@ -6,11 +6,7 @@ const PostContent = (props) => {
   const navigate = useNavigate();
 
   const postClickHandler = () => {
-    const clickedPost = {
-      id: props.content.id,
-      body: props.content.body,
-    };
-    navigate(`/posts/${props.content.id}/comments`, { state: clickedPost });
+    navigate(`/comments/${props.content.id}`);
   };
 
   return (

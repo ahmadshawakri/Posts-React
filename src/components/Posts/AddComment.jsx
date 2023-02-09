@@ -13,14 +13,12 @@ const AddComment = (props) => {
     }
 
     if (event.keyCode === 13) {
-      console.log(comment.current.value);
       setComments((prevState) => [...prevState, comment.current.value]);
       setTimeout(() => {
         setCommentIsValid(true);
         comment.current.value = "";
       }, 0);
     }
-    console.log(comments);
   };
 
   return (
