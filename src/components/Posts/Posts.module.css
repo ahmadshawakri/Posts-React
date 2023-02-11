@@ -1,10 +1,3 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 21.875rem;
-  margin: auto;
-}
 
 .footer {
   position: sticky;
@@ -24,5 +17,23 @@
   border-radius: 1.2rem;
   font-size: 1.5rem;
   color: #fff;
+  cursor: pointer;
+}
+
+.loadButton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loadButton button{
+  min-width: 4rem;
+  height: 2rem;
+  background: linear-gradient(202.17deg, #ff00d6 8.58%, #ff4d00 91.42%);
+  border: transparent;
+  border-radius: 1.2rem;
+  color: #fff;
+  font-family: 'Comfortaa';
+  font-size: 0.8rem;
   cursor: pointer;
 }

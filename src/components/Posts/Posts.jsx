@@ -9,9 +9,11 @@ import Card from "../UI/Card";
 
 export default function Posts(props) {
   const [state, setState] = useState({
-    userPosts: [],
+    allPosts: [],
+    loadedPosts: [],
     userInfo: [],
     isLoaded: false,
+    startIndex: 0,
   });
 
   useEffect(() => {
@@ -22,9 +24,11 @@ export default function Posts(props) {
       );
       const posts = await res.json();
       setState({
-        userPosts: posts,
+        allPosts: posts,
+        loadedPosts: posts.slice(0, 5),
         userInfo: loggedUser,
         isLoaded: true,
+        startIndex: 5,
       });
     };
     loadPosts();
@@ -32,10 +36,25 @@ export default function Posts(props) {
 
   const addPostHandler = async (addedNewPost) => {
     await setState((prevState) => ({
-      userPosts: [addedNewPost, ...prevState.userPosts],
-      userInfo: prevState.userInfo,
-      isLoaded: prevState.isLoaded,
+      ...state,
+      allPosts: [addedNewPost, ...prevState.allPosts],
+      loadedPosts: [addedNewPost, ...prevState.loadedPosts],
     }));
+  };
+
+  const loadMorePosts = () => {
+    setState((prevState) => ({
+      ...state,
+      loadedPosts: [
+        ...prevState.loadedPosts,
+        ...prevState.allPosts.slice(
+          prevState.startIndex,
+          prevState.startIndex + 5
+        ),
+      ],
+      startIndex: prevState.startIndex + 5,
+    }));
+    return;
   };
 
   return (
@@ -43,7 +62,7 @@ export default function Posts(props) {
       <Card>
         <Headers head="Discover" />
         {state.isLoaded &&
-          state.userPosts.map((post) => (
+          state.loadedPosts.map((post) => (
             <React.Fragment key={post.id}>
               <UserInfo
                 name={state.userInfo.name}
@@ -53,7 +72,13 @@ export default function Posts(props) {
               <AddComment />
             </React.Fragment>
           ))}
+        <div className={classes.loadButton}>
+          <button type="button" onClick={loadMorePosts}>
+            More Posts
+          </button>
+        </div>
       </Card>
+
       <footer className={classes.footer}>
         <AddPost onAddPost={addPostHandler} />
       </footer>
