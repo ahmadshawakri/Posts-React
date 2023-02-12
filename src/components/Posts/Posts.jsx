@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import classes from "./Posts.module.css";
 import Headers from "../UI/Headers";
 import UserInfo from "../UI/UserInfo";
@@ -8,6 +8,7 @@ import AddPost from "./AddPost";
 import Card from "../UI/Card";
 
 export default function Posts(props) {
+  const [searchedInput, setSearchedInput] = useState("");
   const [state, setState] = useState({
     allPosts: [],
     loadedPosts: [],
@@ -57,12 +58,33 @@ export default function Posts(props) {
     return;
   };
 
+  const searchPostHandler = (event) => {
+    setSearchedInput(event.target.value);
+  };
+
+  const filteredPosts = state.loadedPosts.filter((post) =>
+    post.body.toLowerCase().includes(searchedInput.toLocaleLowerCase())
+  );
+
   return (
-    <>
+    <div className={classes.mainDiv}>
       <Card>
         <Headers head="Discover" />
+        <div className={classes.searchBar}>
+          <div className={classes.searchIcon}>
+            <img src="../../../img/icons8-search-48.png" />
+          </div>
+          <div className={classes.searchInput}>
+            <input
+              type="text"
+              placeholder="Search for posts..."
+              value={searchedInput}
+              onChange={searchPostHandler}
+            />
+          </div>
+        </div>
         {state.isLoaded &&
-          state.loadedPosts.map((post) => (
+          filteredPosts.map((post) => (
             <React.Fragment key={post.id}>
               <UserInfo
                 name={state.userInfo.name}
@@ -82,6 +104,6 @@ export default function Posts(props) {
       <footer className={classes.footer}>
         <AddPost onAddPost={addPostHandler} />
       </footer>
-    </>
+    </div>
   );
 }

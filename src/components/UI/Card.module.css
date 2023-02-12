@@ -1,7 +1,8 @@
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   max-width: 21.875rem;
   margin: auto;
+  gap: .3rem;
+  padding-bottom: 5rem;
 }
